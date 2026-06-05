@@ -85,10 +85,10 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-brand-mustard">
+      <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-mustard sm:mb-5">
         {title}
       </h3>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-2 sm:gap-3">
         {links.map((link) => (
           <li key={link.label}>
             <Link
@@ -107,16 +107,14 @@ function FooterColumn({
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-footer-navy">
-      <Container className="pt-16 pb-6 lg:pt-20 lg:pb-8">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          <div className="sm:col-span-2 lg:col-span-1">
+      <Container className="pt-10 pb-8 sm:pt-16 lg:pt-20 lg:pb-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4 lg:gap-10">
+          <div className="col-span-2 flex flex-col items-center text-center sm:items-start sm:text-left lg:col-span-1">
             <FooterLogo />
-            <p className="mb-2 text-sm leading-relaxed text-footer-muted">
-              The Federation of Student
-              <br />
-              Islamic Societies
+            <p className="mb-2 max-w-xs text-sm leading-relaxed text-footer-muted">
+              The Federation of Student Islamic Societies
             </p>
-            <p className="mb-4 text-sm font-semibold text-brand-mustard">
+            <p className="mb-3 text-sm font-semibold text-brand-mustard sm:mb-4">
               Est. 1963
             </p>
             <p className="max-w-xs text-sm leading-relaxed text-footer-muted">
@@ -125,12 +123,17 @@ export function Footer() {
             </p>
           </div>
 
-          {footerColumns.map((column) => (
-            <FooterColumn key={column.title} {...column} />
+          {footerColumns.map((column, index) => (
+            <div
+              key={column.title}
+              className={index === footerColumns.length - 1 ? "col-span-2 lg:col-span-1" : undefined}
+            >
+              <FooterColumn {...column} />
+            </div>
           ))}
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-8 border-t border-white/10 pt-10">
+        <div className="mt-10 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8 sm:pt-10">
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -151,7 +154,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-footer-muted sm:flex-row">
+        <div className="mt-8 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-center text-sm text-footer-muted sm:mt-10 sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
           <p>© 2026 FOSIS. All rights reserved.</p>
           <p>
             Representing{" "}

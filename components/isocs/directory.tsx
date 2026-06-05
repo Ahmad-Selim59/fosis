@@ -1,32 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { IsocModal } from "@/components/isocs/isoc-modal";
 import { Container } from "@/components/ui/container";
 import {
   ISOC_DIRECTORY_ANCHOR,
   ISOC_PAGE_SIZE,
   getIsocInitials,
+  resolveRegionFilter,
   type Isoc,
 } from "@/lib/isocs-data";
-
-function ChevronIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        d="M19 9l-7 7-7-7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
 
 function SearchIcon() {
   return (
@@ -49,24 +32,33 @@ function SearchIcon() {
 
 type IsocDirectoryProps = {
   isocs: Isoc[];
+  initialRegionSlug?: string;
 };
 
-export function IsocDirectory({ isocs }: IsocDirectoryProps) {
+export function IsocDirectory({ isocs, initialRegionSlug }: IsocDirectoryProps) {
+  const isocRegions = useMemo(
+    () => Array.from(new Set(isocs.map((isoc) => isoc.region))).sort(),
+    [isocs],
+  );
+
   const [query, setQuery] = useState("");
-  const [region, setRegion] = useState("All Regions");
+  const [selectedRegions, setSelectedRegions] = useState<Set<string> | "all">(
+    () => resolveRegionFilter(initialRegionSlug, isocRegions),
+  );
   const [page, setPage] = useState(1);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedIsoc, setSelectedIsoc] = useState<Isoc | null>(null);
 
   const regions = useMemo(
-    () => ["All Regions", ...Array.from(new Set(isocs.map((isoc) => isoc.region))).sort()],
-    [isocs],
+    () => ["All Regions", ...isocRegions],
+    [isocRegions],
   );
 
   const filtered = useMemo(() => {
     const normalisedQuery = query.trim().toLowerCase();
 
     return isocs.filter((isoc) => {
-      const matchesRegion = region === "All Regions" || isoc.region === region;
+      const matchesRegion =
+        selectedRegions === "all" || selectedRegions.has(isoc.region);
       const matchesQuery =
         normalisedQuery.length === 0 ||
         isoc.name.toLowerCase().includes(normalisedQuery) ||
@@ -74,7 +66,7 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
 
       return matchesRegion && matchesQuery;
     });
-  }, [isocs, query, region]);
+  }, [isocs, query, selectedRegions]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ISOC_PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
@@ -91,17 +83,21 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
   function handleQueryChange(value: string) {
     setQuery(value);
     setPage(1);
-    setExpandedId(null);
+    setSelectedIsoc(null);
   }
 
   function handleRegionChange(value: string) {
-    setRegion(value);
+    setSelectedRegions(value === "All Regions" ? "all" : new Set([value]));
     setPage(1);
-    setExpandedId(null);
+    setSelectedIsoc(null);
   }
 
   useEffect(() => {
-    if (window.location.hash !== `#${ISOC_DIRECTORY_ANCHOR}`) {
+    const shouldScroll =
+      window.location.hash === `#${ISOC_DIRECTORY_ANCHOR}` ||
+      Boolean(initialRegionSlug);
+
+    if (!shouldScroll) {
       return;
     }
 
@@ -111,8 +107,7 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
     }
 
     target.scrollIntoView({ behavior: "smooth", block: "start" });
-    document.getElementById("isoc-search")?.focus({ preventScroll: true });
-  }, []);
+  }, [initialRegionSlug]);
 
   return (
     <section
@@ -146,7 +141,11 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
           <p className="eyebrow mb-3">Filter by Region</p>
           <div className="flex flex-wrap gap-2">
             {regions.map((regionName) => {
-              const active = region === regionName;
+              const active =
+                regionName === "All Regions"
+                  ? selectedRegions === "all"
+                  : selectedRegions !== "all" &&
+                    selectedRegions.has(regionName);
 
               return (
                 <button
@@ -168,92 +167,35 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
 
         <p className="mb-6 text-sm uppercase tracking-wider text-gray-400">
           {filtered.length} ISoc{filtered.length === 1 ? "" : "s"} found — click
-          a card to expand details
+          a card to view details
         </p>
 
         {paginated.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {paginated.map((isoc) => {
-              const isOpen = expandedId === isoc.id;
-
-              return (
-                <div
-                  key={isoc.id}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f2840] to-[#1a3a5c]"
-                >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedId(isOpen ? null : isoc.id)
-                    }
-                    className="flex w-full items-start gap-4 p-5 text-left text-white"
-                    aria-expanded={isOpen}
-                  >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-bold text-white">
-                      {getIsocInitials(isoc.name)}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-bold text-white">{isoc.name}</h3>
-                      <p className="text-sm text-gray-300">
-                        {isoc.university}
-                      </p>
-                    </div>
-                    <ChevronIcon open={isOpen} />
-                  </button>
-
-                  <div className="border-t border-white/10 px-5 py-3">
-                    <span className="inline-block rounded-full border border-brand-mustard/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-mustard">
-                      {isoc.region}
-                    </span>
+            {paginated.map((isoc) => (
+              <button
+                key={isoc.id}
+                type="button"
+                onClick={() => setSelectedIsoc(isoc)}
+                className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f2840] to-[#1a3a5c] text-left transition-colors hover:border-brand-mustard/30"
+              >
+                <div className="flex items-start gap-4 p-5 text-white">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-bold text-white">
+                    {getIsocInitials(isoc.name)}
                   </div>
-
-                  {isOpen && (
-                    <div className="border-t border-white/10 bg-[#0a1628] px-5 py-4 text-sm text-gray-300">
-                      {isoc.description && (
-                        <p className="mb-3 leading-relaxed">{isoc.description}</p>
-                      )}
-                      {isoc.email && (
-                        <p>
-                          Email:{" "}
-                          <a
-                            href={`mailto:${isoc.email}`}
-                            className="font-medium text-white underline decoration-brand-mustard underline-offset-2 hover:text-brand-mustard"
-                          >
-                            {isoc.email}
-                          </a>
-                        </p>
-                      )}
-                      {isoc.instagram && (
-                        <p className="mt-2">
-                          Instagram:{" "}
-                          <a
-                            href={isoc.instagram}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-white underline decoration-brand-mustard underline-offset-2 hover:text-brand-mustard"
-                          >
-                            {isoc.instagram}
-                          </a>
-                        </p>
-                      )}
-                      {isoc.website && (
-                        <p className="mt-2">
-                          Website:{" "}
-                          <a
-                            href={isoc.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-white underline decoration-brand-mustard underline-offset-2 hover:text-brand-mustard"
-                          >
-                            {isoc.website}
-                          </a>
-                        </p>
-                      )}
-                    </div>
-                  )}
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-white">{isoc.name}</h3>
+                    <p className="text-sm text-gray-300">{isoc.university}</p>
+                  </div>
                 </div>
-              );
-            })}
+
+                <div className="border-t border-white/10 px-5 py-3">
+                  <span className="inline-block rounded-full border border-brand-mustard/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-mustard">
+                    {isoc.region}
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
         ) : (
           <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-12 text-center">
@@ -291,7 +233,7 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
                   type="button"
                   onClick={() => {
                     setPage(pageNumber);
-                    setExpandedId(null);
+                    setSelectedIsoc(null);
                   }}
                   aria-current={pageNumber === currentPage ? "page" : undefined}
                   className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-colors ${
@@ -318,6 +260,10 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
           </nav>
         )}
       </Container>
+
+      {selectedIsoc && (
+        <IsocModal isoc={selectedIsoc} onClose={() => setSelectedIsoc(null)} />
+      )}
     </section>
   );
 }

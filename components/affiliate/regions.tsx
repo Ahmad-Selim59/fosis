@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { regions } from "@/lib/affiliate-data";
-import { routes } from "@/lib/routes";
+import { getIsocDirectoryHref } from "@/lib/isocs-data";
 
 function ChevronDown() {
   return (
@@ -42,7 +42,7 @@ export function AffiliateRegions() {
           {regions.map((region) => (
             <Link
               key={region.slug}
-              href={routes.isocs}
+              href={getIsocDirectoryHref(region.slug)}
               className="group flex min-h-[180px] flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f2840] to-[#1a3a5c] p-8 text-center transition-all hover:border-brand-mustard/30 hover:shadow-lg"
             >
               <h3 className="mb-2 text-2xl font-bold text-white">

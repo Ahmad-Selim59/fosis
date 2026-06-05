@@ -10,7 +10,7 @@ export function MissionSection() {
 
         <h2 className="headline-kerning mb-8 text-4xl font-extrabold text-brand-navy md:text-5xl lg:text-6xl">
           We have been serving
-          <br className="hidden md:block" />
+          <br />
           Muslim students since 1963.
         </h2>
 

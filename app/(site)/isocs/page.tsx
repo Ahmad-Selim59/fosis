@@ -13,7 +13,12 @@ export const metadata: Metadata = {
     "Browse 150+ affiliated Islamic Societies across the UK and Ireland — find your campus ISoc today.",
 };
 
-export default function IsocsPage() {
+type IsocsPageProps = {
+  searchParams: Promise<{ region?: string }>;
+};
+
+export default async function IsocsPage({ searchParams }: IsocsPageProps) {
+  const { region } = await searchParams;
   const isocs = getIsocList();
 
   return (
@@ -21,7 +26,7 @@ export default function IsocsPage() {
       <IsocsHero />
       <IsocsIntro />
       <IsocsRegions />
-      <IsocDirectory isocs={isocs} />
+      <IsocDirectory isocs={isocs} initialRegionSlug={region} />
       <IsocsNoIsoc />
       <FosisServicesGetInvolvedCta />
     </main>

@@ -4,42 +4,58 @@
     "name": "Abertay University Islamic Society",
     "university": "Abertay University",
     "region": "Scotland",
-    "email": "abisoc@abertay.ac.uk"
+    "email": "abisoc@abertay.ac.uk",
+    "description": "A welcoming community for Muslim students at Abertay — weekly circles, socials, and support throughout the year."
   },
   {
     "id": "anglia-ruskin",
     "name": "Anglia Ruskin Islamic Society",
     "university": "Anglia Ruskin University",
     "region": "East of England",
-    "email": "arisoc@aru.ac.uk"
+    "email": "arisoc@aru.ac.uk",
+    "instagram": "https://instagram.com/arisoc",
+    "description": "ARU ISoc runs prayer support, freshers events, and community activities for Muslim students across Cambridge and Chelmsford campuses."
   },
   {
     "id": "aston",
     "name": "Aston University Islamic Society",
     "university": "Aston University",
     "region": "West Midlands",
-    "email": "auisoc@aston.ac.uk"
+    "email": "auisoc@aston.ac.uk",
+    "whatsappMen": "https://chat.whatsapp.com/example-aston-brothers",
+    "whatsappWomen": "https://chat.whatsapp.com/example-aston-sisters",
+    "description": "Join Aston ISoc for Jumu'ah, charity drives, and a strong brothers' and sisters' network on campus."
   },
   {
     "id": "bath",
     "name": "University of Bath Islamic Society",
     "university": "University of Bath",
     "region": "South West",
-    "email": "bathisoc@bath.ac.uk"
+    "email": "bathisoc@bath.ac.uk",
+    "instagram": "https://instagram.com/bathisoc",
+    "whatsappWomen": "https://chat.whatsapp.com/example-bath-sisters",
+    "description": "Bath ISoc brings together Muslim students for welfare support, lectures, and social events on campus."
   },
   {
     "id": "birmingham",
     "name": "University of Birmingham Islamic Society",
     "university": "University of Birmingham",
     "region": "West Midlands",
-    "email": "ubisoc@student.bham.ac.uk"
+    "email": "ubisoc@student.bham.ac.uk",
+    "instagram": "https://instagram.com/ubisoc",
+    "whatsappMen": "https://chat.whatsapp.com/example-birmingham-brothers",
+    "whatsappWomen": "https://chat.whatsapp.com/example-birmingham-sisters",
+    "description": "One of the UK's largest ISocs — UoB ISoc offers welfare, sports, academic support, and a vibrant community for every Muslim student."
   },
   {
     "id": "bristol",
     "name": "University of Bristol Islamic Society",
     "university": "University of Bristol",
     "region": "South West",
-    "email": "brisoc@bristol.ac.uk"
+    "email": "brisoc@bristol.ac.uk",
+    "instagram": "https://instagram.com/brisoc",
+    "whatsappMen": "https://chat.whatsapp.com/example-bristol-brothers",
+    "description": "Bristol ISoc hosts regular talks, community iftars, and pastoral support for Muslim students in the city."
   },
   {
     "id": "cambridge",
