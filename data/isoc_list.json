@@ -1,0 +1,191 @@
+[
+  {
+    "id": "abertay",
+    "name": "Abertay University Islamic Society",
+    "university": "Abertay University",
+    "region": "Scotland",
+    "email": "abisoc@abertay.ac.uk"
+  },
+  {
+    "id": "anglia-ruskin",
+    "name": "Anglia Ruskin Islamic Society",
+    "university": "Anglia Ruskin University",
+    "region": "East of England",
+    "email": "arisoc@aru.ac.uk"
+  },
+  {
+    "id": "aston",
+    "name": "Aston University Islamic Society",
+    "university": "Aston University",
+    "region": "West Midlands",
+    "email": "auisoc@aston.ac.uk"
+  },
+  {
+    "id": "bath",
+    "name": "University of Bath Islamic Society",
+    "university": "University of Bath",
+    "region": "South West",
+    "email": "bathisoc@bath.ac.uk"
+  },
+  {
+    "id": "birmingham",
+    "name": "University of Birmingham Islamic Society",
+    "university": "University of Birmingham",
+    "region": "West Midlands",
+    "email": "ubisoc@student.bham.ac.uk"
+  },
+  {
+    "id": "bristol",
+    "name": "University of Bristol Islamic Society",
+    "university": "University of Bristol",
+    "region": "South West",
+    "email": "brisoc@bristol.ac.uk"
+  },
+  {
+    "id": "cambridge",
+    "name": "Cambridge University Islamic Society",
+    "university": "University of Cambridge",
+    "region": "East of England",
+    "email": "cuisoc@cam.ac.uk"
+  },
+  {
+    "id": "cardiff",
+    "name": "Cardiff University Islamic Society",
+    "university": "Cardiff University",
+    "region": "Wales",
+    "email": "cuisoc@cardiff.ac.uk"
+  },
+  {
+    "id": "dublin-trinity",
+    "name": "Trinity College Dublin Islamic Society",
+    "university": "Trinity College Dublin",
+    "region": "Ireland",
+    "email": "tcdisoc@tcd.ie"
+  },
+  {
+    "id": "edinburgh",
+    "name": "University of Edinburgh Islamic Society",
+    "university": "University of Edinburgh",
+    "region": "Scotland",
+    "email": "edinburghisoc@ed.ac.uk"
+  },
+  {
+    "id": "exeter",
+    "name": "University of Exeter Islamic Society",
+    "university": "University of Exeter",
+    "region": "South West",
+    "email": "exeterisoc@exeter.ac.uk"
+  },
+  {
+    "id": "glasgow",
+    "name": "University of Glasgow Islamic Society",
+    "university": "University of Glasgow",
+    "region": "Scotland",
+    "email": "guisoc@glasgow.ac.uk"
+  },
+  {
+    "id": "imperial",
+    "name": "Imperial College Islamic Society",
+    "university": "Imperial College London",
+    "region": "London",
+    "email": "icisoc@imperial.ac.uk"
+  },
+  {
+    "id": "kings",
+    "name": "King's College London Islamic Society",
+    "university": "King's College London",
+    "region": "London",
+    "email": "kclisoc@kcl.ac.uk"
+  },
+  {
+    "id": "leeds",
+    "name": "University of Leeds Islamic Society",
+    "university": "University of Leeds",
+    "region": "Yorkshire",
+    "email": "leedsisoc@leeds.ac.uk"
+  },
+  {
+    "id": "liverpool",
+    "name": "University of Liverpool Islamic Society",
+    "university": "University of Liverpool",
+    "region": "North West",
+    "email": "liverpoolisoc@liverpool.ac.uk"
+  },
+  {
+    "id": "lse",
+    "name": "LSE Islamic Society",
+    "university": "London School of Economics",
+    "region": "London",
+    "email": "lseisoc@lse.ac.uk"
+  },
+  {
+    "id": "manchester",
+    "name": "University of Manchester Islamic Society",
+    "university": "University of Manchester",
+    "region": "North West",
+    "email": "umisoc@manchester.ac.uk"
+  },
+  {
+    "id": "newcastle",
+    "name": "Newcastle University Islamic Society",
+    "university": "Newcastle University",
+    "region": "North East",
+    "email": "nuisoc@newcastle.ac.uk"
+  },
+  {
+    "id": "nottingham",
+    "name": "University of Nottingham Islamic Society",
+    "university": "University of Nottingham",
+    "region": "East Midlands",
+    "email": "nottinghamisoc@nottingham.ac.uk"
+  },
+  {
+    "id": "oxford",
+    "name": "Oxford University Islamic Society",
+    "university": "University of Oxford",
+    "region": "South East",
+    "email": "ouisoc@ox.ac.uk"
+  },
+  {
+    "id": "queens-belfast",
+    "name": "Queen's University Belfast Islamic Society",
+    "university": "Queen's University Belfast",
+    "region": "Northern Ireland",
+    "email": "qubisoc@qub.ac.uk"
+  },
+  {
+    "id": "sheffield",
+    "name": "University of Sheffield Islamic Society",
+    "university": "University of Sheffield",
+    "region": "Yorkshire",
+    "email": "sheffieldisoc@sheffield.ac.uk"
+  },
+  {
+    "id": "southampton",
+    "name": "University of Southampton Islamic Society",
+    "university": "University of Southampton",
+    "region": "South East",
+    "email": "sotonisoc@soton.ac.uk"
+  },
+  {
+    "id": "ucl",
+    "name": "UCL Islamic Society",
+    "university": "University College London",
+    "region": "London",
+    "email": "uclisoc@ucl.ac.uk"
+  },
+  {
+    "id": "warwick",
+    "name": "University of Warwick Islamic Society",
+    "university": "University of Warwick",
+    "region": "West Midlands",
+    "email": "warwickisoc@warwick.ac.uk"
+  },
+  {
+    "id": "york",
+    "name": "University of York Islamic Society",
+    "university": "University of York",
+    "region": "Yorkshire",
+    "email": "yorkisoc@york.ac.uk"
+  }
+]

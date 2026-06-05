@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "graphic-designer-media-marketing",
+    "title": "Graphic Designer: Media and Marketing",
+    "department": "Media & Marketing",
+    "initials": "GD",
+    "engagement": "Volunteer",
+    "commitment": "Part-time",
+    "hours": "3-4 hours a week",
+    "intro": "Design the vision behind FOSIS's national campaigns. As our Graphic Designer, you'll shape how Muslim students across the UK see and engage with the federation — from social media to print, events to advocacy.",
+    "impact": [
+      {
+        "title": "High-Impact Visuals",
+        "description": "Design stunning posters, social assets, and campaign materials for national initiatives like Discover Islam Week and Ihsaan Careers."
+      },
+      {
+        "title": "Creative Quality Control",
+        "description": "Act as the ultimate brand guardian, ensuring every visual output meets FOSIS's professional and Islamic standards."
+      },
+      {
+        "title": "Campaign Support",
+        "description": "Work closely with the communications team to bring creative concepts to life across digital and print channels."
+      }
+    ],
+    "closing": "If you have the eye for detail, a portfolio that speaks for itself, and a passion for serving the Ummah through design — we want to hear from you.",
+    "applyUrl": "mailto:info@fosis.org.uk?subject=Application%3A%20Graphic%20Designer"
+  },
+  {
+    "slug": "team-member-student-engagement",
+    "title": "Team Member: Student Engagement",
+    "department": "Student Engagement",
+    "initials": "TM",
+    "engagement": "Volunteer",
+    "commitment": "Part-time",
+    "hours": "4-5 hours a week",
+    "intro": "Help FOSIS connect with Muslim students nationwide. As a Student Engagement team member, you'll support outreach, events, and initiatives that bring students closer to their ISocs and the wider FOSIS network.",
+    "impact": [
+      {
+        "title": "Student Outreach",
+        "description": "Support campaigns and communications that reach Muslim students across campuses in your region and nationally."
+      },
+      {
+        "title": "Event Coordination",
+        "description": "Assist with planning and delivery of student-facing events, webinars, and engagement activities throughout the year."
+      },
+      {
+        "title": "Community Building",
+        "description": "Help foster a sense of belonging and connection among Muslim students through creative engagement initiatives."
+      }
+    ],
+    "closing": "If you're passionate about student welfare, community, and making a tangible difference on campus — we'd love to hear from you.",
+    "applyUrl": "mailto:info@fosis.org.uk?subject=Application%3A%20Student%20Engagement%20Team%20Member"
+  }
+]
