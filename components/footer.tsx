@@ -108,8 +108,8 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-footer-navy">
       <Container className="pt-10 pb-8 sm:pt-16 lg:pt-20 lg:pb-8">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4 lg:gap-10">
-          <div className="col-span-2 flex flex-col items-center text-center sm:items-start sm:text-left lg:col-span-1">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-8 lg:gap-10">
+          <div className="col-span-2 flex flex-col items-center text-center md:col-span-1 md:items-start md:text-left">
             <FooterLogo />
             <p className="mb-2 max-w-xs text-sm leading-relaxed text-footer-muted">
               The Federation of Student Islamic Societies
@@ -126,7 +126,7 @@ export function Footer() {
           {footerColumns.map((column, index) => (
             <div
               key={column.title}
-              className={index === footerColumns.length - 1 ? "col-span-2 lg:col-span-1" : undefined}
+              className={index === footerColumns.length - 1 ? "col-span-2 md:col-span-1" : undefined}
             >
               <FooterColumn {...column} />
             </div>
