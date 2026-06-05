@@ -1,18 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Container } from "@/components/ui/container";
-import { ISOC_PAGE_SIZE, type Isoc } from "@/lib/isocs-data";
-
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .filter((word) => word.length > 2 && /^[A-Z]/.test(word))
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase() || name.slice(0, 2).toUpperCase();
-}
+import {
+  ISOC_DIRECTORY_ANCHOR,
+  ISOC_PAGE_SIZE,
+  getIsocInitials,
+  type Isoc,
+} from "@/lib/isocs-data";
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
@@ -105,8 +100,25 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
     setExpandedId(null);
   }
 
+  useEffect(() => {
+    if (window.location.hash !== `#${ISOC_DIRECTORY_ANCHOR}`) {
+      return;
+    }
+
+    const target = document.getElementById(ISOC_DIRECTORY_ANCHOR);
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("isoc-search")?.focus({ preventScroll: true });
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-section-navy section-padding-md">
+    <section
+      id={ISOC_DIRECTORY_ANCHOR}
+      className="relative scroll-mt-24 overflow-hidden bg-section-navy section-padding-md"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-[#0f2840] to-brand-navy" />
 
       <Container className="relative z-10">
@@ -178,7 +190,7 @@ export function IsocDirectory({ isocs }: IsocDirectoryProps) {
                     aria-expanded={isOpen}
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-bold text-white">
-                      {getInitials(isoc.name)}
+                      {getIsocInitials(isoc.name)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="font-bold text-white">{isoc.name}</h3>

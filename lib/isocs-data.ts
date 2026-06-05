@@ -19,3 +19,16 @@ export const fosisRegions = [
 ];
 
 export const ISOC_PAGE_SIZE = 6;
+export const ISOC_DIRECTORY_ANCHOR = "isoc-directory";
+
+export function getIsocInitials(name: string) {
+  return (
+    name
+      .split(" ")
+      .filter((word) => word.length > 2 && /^[A-Z]/.test(word))
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase() || name.slice(0, 2).toUpperCase()
+  );
+}

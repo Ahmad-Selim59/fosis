@@ -20,6 +20,7 @@ export const routes = {
   support: "/support",
   affiliate: "/affiliate",
   isocs: "/isocs",
+  isocsDirectory: "/isocs#isoc-directory",
   volunteer: "/volunteer",
   pillars: {
     advocacy: "/pillars/advocacy",

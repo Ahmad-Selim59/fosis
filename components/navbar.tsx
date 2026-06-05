@@ -140,6 +140,16 @@ export function Navbar() {
   const isDropdownActive = (dropdown: NavDropdown) =>
     dropdown.children.some((child) => isActive(child.href));
 
+  function handleHomeClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (pathname !== routes.home) {
+      return;
+    }
+
+    event.preventDefault();
+    setMobileOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -172,7 +182,11 @@ export function Navbar() {
     >
       <div className="container-padding mx-auto max-w-7xl">
         <div className="flex h-20 items-center gap-8 lg:gap-14">
-          <Link href={routes.home} className="shrink-0">
+          <Link
+            href={routes.home}
+            className="shrink-0"
+            onClick={handleHomeClick}
+          >
             <FosisLogo />
           </Link>
 
@@ -240,7 +254,7 @@ export function Navbar() {
                     ? "text-brand-mustard"
                     : "text-white hover:text-brand-mustard"
                 }
-                onClick={() => setMobileOpen(false)}
+                onClick={handleHomeClick}
               >
                 Home
               </Link>
